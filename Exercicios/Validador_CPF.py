@@ -42,7 +42,11 @@ def pergunta(CPF):
         Separa_ponto = CPF_BRL.split('.')
         separdor2 = ''.join(Separa_ponto).split('-')
         CPF_USER2 = ''.join(separdor2)
-        calculo(CPF_USER2)
+        if CPF_USER2.isnumeric():
+            calculo(CPF_USER2)
+        else:
+            print('CPF invalido.')
+            return pergunta(input("Por Favor digite novamente: "))
     else:
         print('CPF invalido.')
         return pergunta(input("Por Favor digite novamente: "))
