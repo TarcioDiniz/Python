@@ -1,6 +1,10 @@
-from PySimpleGUI import PySimpleGUI as sg
-import pyautogui
+import time
 from os import path
+import pyautogui
+from PySimpleGUI import PySimpleGUI as sg
+from pynput.keyboard import Controller
+
+keyboard = Controller()
 
 # Escolhendo a cor do App
 sg.theme('Dark Grey 13')
@@ -13,7 +17,7 @@ layout1 = [
     [sg.Text("copyright © 2022 Tarcio Diniz", justification='center', size=(50, 0))],
 
 ]
-janela1 = sg.Window('Paste Texts', layout1, finalize=True, size=(400, 400), icon="icon.ico")
+janela1 = sg.Window('Code Paste Robot', layout1, finalize=True, size=(400, 400), icon="icon.ico")
 # Definindo os eventos e valores a ser puxado com pysimplegui
 while True:
     eventos, valores = janela1.read()
@@ -25,10 +29,10 @@ while True:
         for p in Seu_codigo:
             arquivo.write(p)
         arquivo.close()
-# Descobrindo o total de linhas
+        # Descobrindo o total de linhas
         with open(path.expanduser("~/AppData/Local/Temp/arquivo.txt"), encoding="utf8") as meu_arquivo:
             total_linhas = int(sum(1 for line in meu_arquivo))
-# Copiando e colanado as informaçoes em outra aba
+        # Copiando e colanado as informaçoes em outra aba
         pyautogui.hotkey('alt', 'tab')
         file = open(path.expanduser("~/AppData/Local/Temp/arquivo.txt"), encoding="utf-8")
         linha_especifica = list(range(total_linhas))
@@ -37,7 +41,9 @@ while True:
                 repetir = valores["Tempo"] * 10
                 for x in range(repetir):
                     pyautogui.hotkey("shift", "tab")
-                pyautogui.write(f"{linha_num}")
+                keyboard.type(f"{linha_num}")
+                time.sleep(0.1)
         arquivo.close()
     if eventos == 'Exit':
         janela1.close()
+        
