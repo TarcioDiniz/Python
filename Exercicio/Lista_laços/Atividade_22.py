@@ -27,11 +27,11 @@ else:
                     soma += 1
                 else:
                     print('Derrota. 0 pontos')
-                golsPro = int(input('Informe quanto GOLS seu time fez: '))
-                if golsPro < 0:
+            golsPro = int(input('Informe quanto GOLS seu time fez: '))
+            if golsPro < 0:
+                verifica = 0
+            else:
+                golsContra = int(input('Informe quantos GOLS o time adversario fez: '))
+                if golsContra < 0:
                     verifica = 0
-                else:
-                    golsContra = int(input('Informe quantos GOLS o time adversario fez: '))
-                    if golsContra < 0:
-                        verifica = 0
         print(f'Programa encerrado. Você fez um total de {soma} pontos')
