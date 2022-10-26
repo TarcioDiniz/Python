@@ -57,7 +57,7 @@ def _matrixT(matrix):
 
 
 products = generateMatrix(3, 6)
-tamanhos = [36, 36, 37, 38, 39, 40]
+tamanhos = [35, 36, 37, 38, 39, 40]
 
 print_matrix(products)
 
